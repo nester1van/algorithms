@@ -1,0 +1,23 @@
+{
+  "name": "algorithms",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nester1van/algorithms.git"
+  },
+  "author": "nester1van",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nester1van/algorithms/issues"
+  },
+  "homepage": "https://github.com/nester1van/algorithms#readme",
+  "devDependencies": {
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12"
+  }
+}
