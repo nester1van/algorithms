@@ -1,3 +1,4 @@
+import {fnComparisionNumber} from '../../common/fnComparisin/fnComparision';
 // пирамидальная сортировка
 const heap = (function(fnComparision){
   function less(a, b) {

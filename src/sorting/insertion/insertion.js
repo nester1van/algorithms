@@ -29,5 +29,6 @@ export default class Insertion {
               Insertion.exch(arr, j, j-1);
           }
       } 
+      return arr;
   }
 }

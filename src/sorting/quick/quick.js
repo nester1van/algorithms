@@ -1,3 +1,4 @@
+import {fnComparisionNumber} from '../../common/fnComparisin/fnComparision';
 // быстрая сортировка
 const quick = (function(fnComparision) {
   function less(a, b) {

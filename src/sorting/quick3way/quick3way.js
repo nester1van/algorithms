@@ -1,3 +1,4 @@
+import {fnComparisionNumber} from '../../common/fnComparisin/fnComparision';
 // быстрая сортировка с трехчастным разбиением
 const quick3way = (function(fnComparision) {
   function exch(arr, i, j) {

@@ -17,6 +17,8 @@
   },
   "homepage": "https://github.com/nester1van/algorithms#readme",
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.10.4",
+    "jest": "^26.2.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   }

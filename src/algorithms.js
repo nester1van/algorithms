@@ -1,9 +1,9 @@
 import Sorting from './sorting/sorting';
+import Common from './common/common';
 
 const Algorithms = {
-  Sorting
+  Sorting,
+  Common
 };
 
-console.log('hi')
-
-
+export default Algorithms;
