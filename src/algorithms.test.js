@@ -22,6 +22,53 @@ test('Shuffle array', () => {
 });
 
 //===================================
+// Other algorithms
+//===================================
+
+let arrConnections = [[4, 3], [3, 8], [6, 5], [9, 4], [2, 1],
+  [8, 9], [5, 0], [7, 2], [6, 1], [1, 0], [6, 7]];
+
+
+test('Union Find quick union', () => {
+  let UnionFindQuickUnion = Algorithms.OtherAlgorithms.UnionFindQuickUnion;
+  let unionFindQuickUnion1 = new UnionFindQuickUnion(10);
+  let arrComponents = [1, 1, 1, 8, 3, 0, 5, 1, 8, 8];
+  for (let bind in arrConnections) {
+      unionFindQuickUnion1.union(arrConnections[bind][0], 
+        arrConnections[bind][1]);
+  }
+  expect(unionFindQuickUnion1.id)
+  .toEqual([...arrComponents]);
+});
+
+test('Union Find quick search', () => {
+  let UnionFindQuickSearch = Algorithms.OtherAlgorithms.UnionFindQuickSearch;
+  let unionFindQuickSearch1 = new UnionFindQuickSearch(10);
+  let arrComponents = [1, 1, 1, 8, 8, 1, 1, 1, 8, 8];
+  for (let bind in arrConnections) {
+    unionFindQuickSearch1.union(arrConnections[bind][0],
+      arrConnections[bind][1]);
+  }
+  expect(unionFindQuickSearch1.id)
+  .toEqual([...arrComponents]);
+})
+
+test('Union Find weighted quick union', () => {
+  let UnionFindWeightedQuickUnion = Algorithms.OtherAlgorithms.UnionFindWeightedQuickUnion;
+  let unionFindWeightedQuickUnion1 = new UnionFindWeightedQuickUnion(10);
+  let arrComponents = [6, 2, 6, 4, 4, 6, 6, 2, 4, 4];
+  for (let bind in arrComponents) {
+    unionFindWeightedQuickUnion1.union(arrConnections[bind][0],
+      arrConnections[bind][1]);
+  }
+  expect(unionFindWeightedQuickUnion1.id)
+  .toEqual([...arrComponents]);
+})
+
+
+
+
+//===================================
 // Sorting
 //===================================
 
@@ -76,7 +123,6 @@ test('Shell sort', () => {
   expect(Algorithms.Sorting.Shell.sort(startNumArr, fnComparisionNumber))
   .toEqual([...finishNumArr]);
 });
-
 
 
 
