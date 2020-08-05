@@ -36,5 +36,6 @@ export default class Shell {
           }
           h = Math.floor(h / 3);
       }
+      return arr;
   }
 }

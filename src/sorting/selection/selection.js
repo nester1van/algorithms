@@ -31,11 +31,10 @@ export default class Selection {
               if (Selection.less(arr[j], arr[min], fnComparision)) {
                   min = j;
               }
-          Selection.exch(arr, min, i);
           }
+          Selection.exch(arr, min, i);
       }
       return arr;
   }
 }
-
 

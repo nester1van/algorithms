@@ -16,7 +16,7 @@ export default class MergeBottomUp {
   }
   static isSorted(arr, fnComparision) {
       for (let i = 1; i < arr.length; i++) {
-          if (Merge.less(arr[i],arr[i - 1], fnComparision)) {
+          if (MergeBottomUp.less(arr[i],arr[i - 1], fnComparision)) {
               return false;
           }
       }
@@ -36,7 +36,7 @@ export default class MergeBottomUp {
           else if (j > hi) {
               arr[k] = tempArr[i++];
           }
-          else if (Merge.less(tempArr[i], tempArr[j], fnComparision)) {
+          else if (MergeBottomUp.less(tempArr[i], tempArr[j], fnComparision)) {
               arr[k] = tempArr[i++];
           }
           else {arr[k] = tempArr[j++];     }
@@ -48,10 +48,9 @@ export default class MergeBottomUp {
       let tempArr = [];
       for (let sz = 1; sz < l; sz += sz) {
           for (let lo = 0; lo < l - sz; lo += 2 * sz) {
-              Merge.merge(arr, fnComparision, tempArr, lo, lo + sz - 1, Math.min(lo + 2 * sz - 1, l - 1));
+              MergeBottomUp.merge(arr, fnComparision, tempArr, lo, lo + sz - 1, Math.min(lo + 2 * sz - 1, l - 1));
           }
       }
+      return arr;
   }
-
-
 }

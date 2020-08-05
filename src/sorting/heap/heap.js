@@ -1,6 +1,5 @@
-import {fnComparisionNumber} from '../../common/fnComparisin/fnComparision';
 // пирамидальная сортировка
-const heap = (function(fnComparision){
+function heap(fnComparision){
   function less(a, b) {
       return fnComparision(a, b) < 0;
   }
@@ -31,10 +30,9 @@ const heap = (function(fnComparision){
           sink(arr, 1, n);
       }
       arr.shift();
+      return arr;
   }
-  return {
-      sort: sort
-  };
-})(fnComparisionNumber);
+  return sort;
+};
 
 export default heap;
