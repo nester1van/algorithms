@@ -221,6 +221,84 @@ test('Prim MST', () => {
 
 // Shortest Path
 
+let EdgeWeightedDigraph = Algorithms.Graphs.ShortestPaths.EdgeWeightedDigraph;
+let DirectedEdge = Algorithms.Graphs.ShortestPaths.DirectedEdge;
+
+test('Acyclic shortest path', () => {
+  let AcyclicSP = Algorithms.Graphs.ShortestPaths.AcyclicSP;
+  let edgeArr = [[5, 4, 0.35], [4, 7, 0.37], [5, 7, 0.28], [5, 1, 0.32], 
+  [4, 0, 0.38], [0, 2, 0.26], [3, 7, 0.39], [1, 3, 0.29], 
+  [7, 2, 0.34], [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edgeWeightedDigraph1 = new EdgeWeightedDigraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new DirectedEdge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedDigraph1.addEdge(edge);
+  }
+  let acyclicSP1 = new AcyclicSP(edgeWeightedDigraph1, 5);
+  let distTo = [0.73, 0.32, 0.6200000000000001, 0.61, 0.35, 0, 1.13, 0.28];
+  expect(acyclicSP1.distTo).toEqual(distTo);
+});
+
+test('Bellman Ford shortest path', () => {
+  let BellmanFordSP = Algorithms.Graphs.ShortestPaths.BellmanFordSP;
+  let edgeArr = [[4, 5, 0.35], [5, 4, 0.35], [4, 7, 0.37],
+  [5, 7, 0.28], [7, 5, 0.28], [5, 1, 0.32], [0, 4, 0.38],
+  [0, 2, 0.26], [7, 3, 0.39], [1, 3, 0.29], [2, 7, 0.34], 
+  [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edgeWeightedDigraph1 = new EdgeWeightedDigraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new DirectedEdge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedDigraph1.addEdge(edge);
+  }
+  let bellmanFordSP1 = new BellmanFordSP(edgeWeightedDigraph1, 0);
+  let distTo = [0, 1.05, 0.26, 0.9900000000000001,
+    0.38, 0.73, 1.5100000000000002, 0.6000000000000001];
+  expect(bellmanFordSP1.distTo).toEqual(distTo);
+  });
+
+test('Dijkstra shortest path', () => {
+  let DijkstraSP = Algorithms.Graphs.ShortestPaths.DijkstraSP;
+  let edgeArr = [[4, 5, 0.35], [5, 4, 0.35], [4, 7, 0.37],
+  [5, 7, 0.28], [7, 5, 0.28], [5, 1, 0.32], [0, 4, 0.38],
+  [0, 2, 0.26], [7, 3, 0.39], [1, 3, 0.29], [2, 7, 0.34], 
+  [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edgeWeightedDigraph1 = new EdgeWeightedDigraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new DirectedEdge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedDigraph1.addEdge(edge);
+  }
+  let dijkstraSP1 = new DijkstraSP(edgeWeightedDigraph1, 0);
+  let distTo = [0, 1.05, 0.26, 0.9900000000000001,
+    0.38, 0.73, 1.5100000000000002, 0.6000000000000001];
+  expect(dijkstraSP1.distTo).toEqual(distTo);
+});
+
+test('Edge weighted cycle finder', () => {
+  let EdgeWeightedCycleFinder = Algorithms.Graphs.ShortestPaths.EdgeWeightedCycleFinder;
+  let weightedDigraph1 = new EdgeWeightedDigraph(4);
+  let arrEdges = [[0, 1, 1], [1, 2, 2], [2, 3, 3], [3, 1, 4]];
+
+  for (let i = 0; i < arrEdges.length; i++) {
+      let edge = new DirectedEdge(arrEdges[i][0], arrEdges[i][1], arrEdges[i][2]);
+      weightedDigraph1.addEdge(edge);
+  }
+  let edgeWeightedCycleFinder1 = new EdgeWeightedCycleFinder(weightedDigraph1);
+  expect(edgeWeightedCycleFinder1).not.toBe(null);
+});
+
+test('Edge weighted digraph', () => {
+  let edgeArr = [[4, 5, 0.35], [5, 4, 0.35], [4, 7, 0.37],
+  [5, 7, 0.28], [7, 5, 0.28], [5, 1, 0.32], [0, 4, 0.38],
+  [0, 2, 0.26], [7, 3, 0.39], [1, 3, 0.29], [2, 7, 0.34], 
+  [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edgeWeightedDigraph1 = new EdgeWeightedDigraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new DirectedEdge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedDigraph1.addEdge(edge);
+  }
+  expect(edgeWeightedDigraph1.E).toBe(15);
+});
+
 // Undirected Graphs
 
 let Graph = Algorithms.Graphs.UndirectedGraphs.Graph;
