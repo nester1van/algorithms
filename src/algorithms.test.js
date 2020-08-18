@@ -151,6 +151,74 @@ test('Topological sorting', () => {
 
 // Minimum Spanning Trees
 
+let Edge = Algorithms.Graphs.MinimumSpanningTrees.Edge;
+let EdgeWeightedGraph = Algorithms.Graphs.MinimumSpanningTrees.EdgeWeightedGraph;
+
+test('Edge weighted graph', () => {
+  let edgeArr = [[4, 5, 0.35], [4, 7, 0.37], [5, 7, 0.28],
+  [0, 7, 0.16], [1, 5, 0.32], [0, 4, 0.38], [2, 3, 0.17],
+  [1, 7, 0.19], [0, 2, 0.26], [1, 2, 0.36], [1, 3, 0.29],
+  [2, 7, 0.34], [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edge1 = new Edge(edgeArr[0][0], edgeArr[0][1], edgeArr[0][2]);
+  let edgeWeightedGraph1 = new EdgeWeightedGraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new Edge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedGraph1.addEdge(edge);
+  }
+  expect(edgeWeightedGraph1.E).toBe(16);
+});
+
+test('Kruskal MST', () => {
+  let KruskalMST = Algorithms.Graphs.MinimumSpanningTrees.KruskalMST;
+  let edgeArr = [[4, 5, 0.35], [4, 7, 0.37], [5, 7, 0.28],
+  [0, 7, 0.16], [1, 5, 0.32], [0, 4, 0.38], [2, 3, 0.17],
+  [1, 7, 0.19], [0, 2, 0.26], [1, 2, 0.36], [1, 3, 0.29],
+  [2, 7, 0.34], [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edge1 = new Edge(edgeArr[0][0], edgeArr[0][1], edgeArr[0][2]);
+
+  let edgeWeightedGraph1 = new EdgeWeightedGraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new Edge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedGraph1.addEdge(edge);
+  }
+  let kruskalMST1= new KruskalMST(edgeWeightedGraph1);
+  expect(kruskalMST1.mst.size).toBe(7);
+});
+
+test('Lazy Prim MST', () => {
+  let LazyPrimMST = Algorithms.Graphs.MinimumSpanningTrees.LazyPrimMST;
+  let edgeArr = [[4, 5, 0.35], [4, 7, 0.37], [5, 7, 0.28],
+  [0, 7, 0.16], [1, 5, 0.32], [0, 4, 0.38], [2, 3, 0.17],
+  [1, 7, 0.19], [0, 2, 0.26], [1, 2, 0.36], [1, 3, 0.29],
+  [2, 7, 0.34], [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edge1 = new Edge(edgeArr[0][0], edgeArr[0][1], edgeArr[0][2]);
+
+  let edgeWeightedGraph1 = new EdgeWeightedGraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new Edge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedGraph1.addEdge(edge);
+  }
+  let lazyPrimMST1 = new LazyPrimMST(edgeWeightedGraph1);
+  expect(lazyPrimMST1.mst.size).toBe(7);
+});
+
+test('Prim MST', () => {
+  let PrimMST = Algorithms.Graphs.MinimumSpanningTrees.PrimMST;
+  let edgeArr = [[4, 5, 0.35], [4, 7, 0.37], [5, 7, 0.28],
+  [0, 7, 0.16], [1, 5, 0.32], [0, 4, 0.38], [2, 3, 0.17],
+  [1, 7, 0.19], [0, 2, 0.26], [1, 2, 0.36], [1, 3, 0.29],
+  [2, 7, 0.34], [6, 2, 0.4], [3, 6, 0.52], [6, 0, 0.58], [6, 4, 0.93]];
+  let edgeWeightedGraph1 = new EdgeWeightedGraph(8);
+  for (let i = 0; i <edgeArr.length; i++) {
+      let edge = new Edge(edgeArr[i][0], edgeArr[i][1], edgeArr[i][2]);
+      edgeWeightedGraph1.addEdge(edge);
+  }
+  let primMST1 = new PrimMST(edgeWeightedGraph1);
+  let distTo = [0, 0.19, 0.26, 0.17, 0.35, 0.28, 0.4, 0.16];
+  expect(primMST1.distTo).toEqual(distTo);
+
+});
+
 // Shortest Path
 
 // Undirected Graphs

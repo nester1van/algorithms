@@ -10,7 +10,7 @@ export default class DepthFirstSearch {
       this.count++;
       for (let nextV of graph.adj[currentV].fnGenerator()) {
           if (!this.marked(nextV)) {
-              console.log(currentV,nextV);
+            //   console.log(currentV,nextV);
               this.dfs(graph, nextV); 
           } 
       }
