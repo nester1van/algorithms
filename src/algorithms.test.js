@@ -155,12 +155,111 @@ test('Topological sorting', () => {
 
 // Undirected Graphs
 
+let Graph = Algorithms.Graphs.UndirectedGraphs.Graph;
+
+test('Breadth first paths', () => {
+  let BreadthFirstPaths = Algorithms.Graphs.UndirectedGraphs.BreadthFirstPaths;
+  let graph1 = new Graph(13);
+  let arrEdges = [[0, 5], [4, 3], [0, 1], [9, 12], [6, 4],
+  [5, 4], [0, 2], [11, 12], [9, 10], [0,6], [7, 8], [9, 11], [5, 3]];
+
+  for (let i = 0; i < arrEdges.length; i++) {
+      graph1.addEdge(arrEdges[i][0], arrEdges[i][1]);
+  }
+  let breadthFirstPath1 = new BreadthFirstPaths(graph1, 0);
+  expect(breadthFirstPath1.hasPathTo(3)).toBe(true);
+});
+
+test('Connected components', () => {
+  let ConnectedComponents = Algorithms.Graphs.UndirectedGraphs.ConnectedComponents;
+  let graph1 = new Graph(13);
+  let arrEdges = [[0, 5], [4, 3], [0, 1], [9, 12], [6, 4],
+  [5, 4], [0, 2], [11, 12], [9, 10], [0,6], [7, 8], [9, 11], [5, 3]];
+
+  for (let i = 0; i < arrEdges.length; i++) {
+      graph1.addEdge(arrEdges[i][0], arrEdges[i][1]);
+  }
+  let connectedComponents1 = new ConnectedComponents(graph1);
+  expect(connectedComponents1.connected(5, 6)).toBe(true);
+});
+
+test('Find cycle', () => {
+  let Cycle = Algorithms.Graphs.UndirectedGraphs.Cycle;
+  let graph1 = new Graph(13);
+  let arrEdges = [[0, 5], [4, 3], [0, 1], [9, 12], [6, 4],
+  [5, 4], [0, 2], [11, 12], [9, 10], [0,6], [7, 8], [9, 11], [5, 3]];
+
+  for (let i = 0; i < arrEdges.length; i++) {
+      graph1.addEdge(arrEdges[i][0], arrEdges[i][1]);
+  }
+  let cycle1 = new Cycle(graph1);
+  expect(cycle1.hasCycle).toBe(true);
+});
+
+test('Depth first path', () => {
+  let DepthFirstPath = Algorithms.Graphs.UndirectedGraphs.DepthFirstPath;
+  let graph1 = new Graph(13);
+  let arrEdges = [[0, 5], [4, 3], [0, 1], [9, 12], [6, 4],
+  [5, 4], [0, 2], [11, 12], [9, 10], [0,6], [7, 8], [9, 11], [5, 3]];
+
+  for (let i = 0; i < arrEdges.length; i++) {
+      graph1.addEdge(arrEdges[i][0], arrEdges[i][1]);
+  }
+  let depthFirstPath1 = new DepthFirstPath(graph1, 0);
+  expect(depthFirstPath1.hasPathTo(6)).toBe(true);
+});
+
+test('Depth first search', () => {
+  let DepthFirstSearch = Algorithms.Graphs.UndirectedGraphs.DepthFirstSearch;
+  let graph1 = new Graph(13);
+  let arrEdges = [[0, 5], [4, 3], [0, 1], [9, 12], [6, 4],
+  [5, 4], [0, 2], [11, 12], [9, 10], [0,6], [7, 8], [9, 11], [5, 3]];
+
+  for (let i = 0; i < arrEdges.length; i++) {
+      graph1.addEdge(arrEdges[i][0], arrEdges[i][1]);
+  }
+  let dfs1 = new DepthFirstSearch(graph1, 12);
+  expect(dfs1.count).toBe(4);
+})
+
+test('Is graph bipartite', () => {
+  let TwoColor = Algorithms.Graphs.UndirectedGraphs.TwoColor;
+  let graph2 = new Graph(9);
+  let arrEdges2 = [[0, 1], [0, 3], [1, 2], [1, 4], [2, 5],
+  [3, 6], [3, 4], [4, 7], [4, 5], [5, 8], [6, 7], [7, 8]];
+  for (let i = 0; i < arrEdges2.length; i++) {
+      graph2.addEdge(arrEdges2[i][0], arrEdges2[i][1]);
+  }
+  let twoColor2 = new TwoColor(graph2);
+  expect(twoColor2.isTwoColorable).toBe(true);
+});
+
+test('Symbol graph', () => {
+  let SymbolGraph = Algorithms.Graphs.UndirectedGraphs.SymbolGraph;
+  let arrEdges1 = [["A", "B"], ["A", "C"],
+  ["B", "D"], ["B", "E"], ["C", "F"], ["C", "G"]];
+  let symbolGraph1 = new SymbolGraph(arrEdges1);
+  expect(symbolGraph1.arrKeys).toEqual(["A", "B", "C", "D", "E", "F", "G"]);
+});
+
+test('Undirected graph', () => {
+  let graph1 = new Graph(13);
+  let arrEdges = [[0, 5], [4, 3], [0, 1], [9, 12], [6, 4],
+  [5, 4], [0, 2], [11, 12], [9, 10], [0,6], [7, 8], [9, 11], [5, 3]];
+
+  for (let i = 0; i < arrEdges.length; i++) {
+      graph1.addEdge(arrEdges[i][0], arrEdges[i][1]);
+  }
+  expect(graph1.E).toBe(13);
+});
+
+
 
 //===================================
 // Other algorithms
 //===================================
 
-test('greatest common divisor', () => {
+test('Greatest common divisor', () => {
   expect(Algorithms.OtherAlgorithms.gcd(10, 25)).toBe(5);
 })
 
