@@ -399,7 +399,83 @@ test('Undirected graph', () => {
   expect(graph1.E).toBe(13);
 });
 
+//===================================
+// Hash Table
+//===================================
 
+test('hash function', () => {
+  let hashFunction = Algorithms.HashTable.hashFunction;
+  let map1 = new Map();
+
+  function hashChar(char) {
+      return hashFunction(char, 199, 7);
+  }
+
+  for (let i = "A".charCodeAt(0); i < "Z".charCodeAt(0) + 1; i++) {
+      let char = String.fromCharCode(i);
+      if (map1.has(hashChar(char))) {
+          map1.set(hashChar(char), map1.get(hashChar(char)) + 1);
+      }
+      else {
+          map1.set(hashChar(char), 1);
+      }
+  }
+  for (let i = "a".charCodeAt(0); i < "z".charCodeAt(0) + 1; i++) {
+      let char = String.fromCharCode(i);
+      if (map1.has(hashChar(char))) {
+          map1.set(hashChar(char), map1.get(hashChar(char)) + 1);
+      }
+      else {
+          map1.set(hashChar(char), 1);
+      }
+  }
+  let resArr = [[ 2, 8 ], [ 3, 8 ], [ 4, 7 ], [ 5, 7 ], 
+                [ 6, 8 ], [ 0, 7 ], [ 1, 7 ]];
+  expect([...map1.entries()]).toEqual(resArr);
+});
+
+test('Linear probing hash ST', () => {
+  let LinearProbingHashST = Algorithms.HashTable.LinearProbingHashST;
+  let linearProbingHashST = new LinearProbingHashST(199, 31, 8);
+  function random(min, max) {
+      return min + Math.floor((max + 1 - min) * Math.random());
+  }
+  function randomChar(minChar, maxChar) {
+      let min = minChar.charCodeAt(0);
+      let max = maxChar.charCodeAt(0);
+      let randomCharCode = random(min, max);
+      return String.fromCharCode(randomCharCode);
+  }
+  let arrStrings = [];
+  let lengthArrStrings = 20;
+  for (let i = 0; i < lengthArrStrings; i++) {
+      let string = randomChar("A", "Z") + randomChar("A", "Z") + randomChar("A", "Z");
+      arrStrings.push(string);
+  }
+  arrStrings = ["MFY", "AFK", "IGZ", "FCR", "AMH", "FTT", "HPC", "UIY", "AVI", 
+  "TFL", "OGE", "WZK", "XIU", "CCN", "MUS", "ABX", "SBL", "GDM", "TEN", "WQK"];
+  for (let i = 0; i <lengthArrStrings; i++) {
+      linearProbingHashST.put(arrStrings[i], i);
+  }
+  let resArr = ["MFY", , "GDM", "XIU", "AFK", "MUS", , "HPC", , , ,
+    "FCR", "TEN", , "WZK", , , "FTT", , "SBL", "IGZ", "OGE", "WQK",
+    "TFL", "AVI", , , "UIY", "CCN", "ABX", "AMH"];
+  expect(linearProbingHashST.arrKeys).toEqual(resArr);
+});
+
+test('Separate chaining hash ST', () => {
+  let SeparateChainingHashST = Algorithms.HashTable.SeparateChainingHashST;
+  let separateChainingHashST = new SeparateChainingHashST(7, 31);
+  for (let i = "A".charCodeAt(0); i < "Z".charCodeAt(0) + 1; i++) {
+      let char = String.fromCharCode(i);
+      separateChainingHashST.put(char,i);
+  }
+  for (let i = "a".charCodeAt(0); i < "z".charCodeAt(0) + 1; i++) {
+      let char = String.fromCharCode(i);
+      separateChainingHashST.put(char,i);
+  }
+  expect(separateChainingHashST.has("B")).toBe(true);
+});
 
 //===================================
 // Other algorithms
@@ -412,7 +488,20 @@ test('Greatest common divisor', () => {
 let arrConnections = [[4, 3], [3, 8], [6, 5], [9, 4], [2, 1],
   [8, 9], [5, 0], [7, 2], [6, 1], [1, 0], [6, 7]];
 
-
+test('Three sum', () => {
+  // not tested yet
+  let { threeSum: threeSum, randomArr } = Algorithms.OtherAlgorithms.threeSum;
+  for (let i = 100; i < 1000; i+=100) {
+    let arr1 = randomArr(i, 10);
+    let timeStart = new Date();
+    let count1 = threeSum(arr1);
+    let timeFinish = new Date();
+    let dt = timeFinish - timeStart;
+    // console.log(dt);
+    // console.log(i ** 3 / count1[1]);
+  };
+});
+  
 test('Union Find quick union', () => {
   let UnionFindQuickUnion = Algorithms.OtherAlgorithms.UnionFindQuickUnion;
   let unionFindQuickUnion1 = new UnionFindQuickUnion(10);
