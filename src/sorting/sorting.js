@@ -6,6 +6,7 @@ import heap from './heap/heap';
 import MergeBottomUp from './mergeBottomUp/mergeBottomUp';
 import MergeTopDown from './mergeTopDown/mergeTopDown';
 import Shell from './shell/shell';
+import variousKeys from './variousKeysInArr/variousKeysInArr';
 
 const Sorting = {
   Selection,
@@ -15,7 +16,8 @@ const Sorting = {
   heap,
   MergeBottomUp,
   MergeTopDown,
-  Shell
+  Shell,
+  variousKeys
 };
 
 

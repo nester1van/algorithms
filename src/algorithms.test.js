@@ -461,6 +461,52 @@ test('Binary search', () => {
   .toBe(5); // 5th index in sorted array
 });
 
+test('Binary search ST', () => {
+  let BinarySearchST = Algorithms.Search.BinarySearchST;
+  let binarySearchST1 = new BinarySearchST();
+  binarySearchST1.put(4, 3);
+  binarySearchST1.put(5, 6);
+  binarySearchST1.put(3, 1);
+  binarySearchST1.put(4, 10);
+  expect(binarySearchST1.minKey()).toBe(3);
+});
+
+test('Binarys search tree', () => {
+  let BinarySearchTree = Algorithms.Search.BinarySearchTree;
+  let binarySearchTree1 = new BinarySearchTree();
+  let arr1 = [[15, 0], [9, 1], [23, 2], [3, 3], [12, 4], 
+              [17, 5], [28, 6], [8, 7], [2, 8]];
+  for (let item in arr1) {
+      binarySearchTree1.put(arr1[item][0], arr1[item][1]);
+  }
+  expect(binarySearchTree1.max()).toBe(28);
+});
+
+test('RedBlack BST', () => {
+  let RedBlackBST = Algorithms.Search.RedBlackBST;
+  let redBlackBST1 = new RedBlackBST();
+  let arr1 = ["A", "C", "E", "H", "L", "M", "P", "R", "S", "X"];
+  for (let i = 0; i < arr1.length; i++) {
+      redBlackBST1.put(arr1[i], i);
+  };
+  expect(redBlackBST1.root.key).toBe('H');
+});
+
+test('Sequential search ST', () => {
+  let SequentialSearchST = Algorithms.Search.SequentialSearchST;
+  let arr1 = [1, 3, 6, 8, 3, 8];
+  let sequentialSearchST1 = new SequentialSearchST();
+  for (let i = 0; i < arr1.length; i++) {
+      sequentialSearchST1.put(arr1[i], i);
+  }
+  let generator1 = sequentialSearchST1.generator();
+  let str = "";
+  for(let item = generator1.next() ; item.done == false; item = generator1.next()) {
+      str += item.value + " -> ";
+  }
+  expect(sequentialSearchST1.get(3)).toBe(4);
+});
+
 //===================================
 // Sorting
 //===================================
@@ -515,6 +561,11 @@ test('Selection sort', () => {
 test('Shell sort', () => {
   expect(Algorithms.Sorting.Shell.sort(startNumArr, fnComparisionNumber))
   .toEqual([...finishNumArr]);
+});
+
+test('Various keys in array', () => {
+  let arr1 = [1, 3, 3, 4, 4, 5, 6];
+  expect(Algorithms.Sorting.variousKeys.countingVariosKeys(arr1)).toBe(5);
 });
 
 
