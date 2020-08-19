@@ -5,6 +5,7 @@ import HashTable from './hashTable/hashTable';
 import OtherAlgorithms from './otherAlgorithms/otherAlgorithms';
 import Search from './search/search';
 import Sorting from './sorting/sorting';
+import Strings from './strings/strings';
 
 const Algorithms = {
   AbstractDataTypes,
@@ -13,7 +14,8 @@ const Algorithms = {
   HashTable,
   OtherAlgorithms,
   Search,
-  Sorting
+  Sorting,
+  Strings
 };
 
 export default Algorithms;

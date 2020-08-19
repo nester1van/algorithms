@@ -657,5 +657,151 @@ test('Various keys in array', () => {
   expect(Algorithms.Sorting.variousKeys.countingVariosKeys(arr1)).toBe(5);
 });
 
+//===================================
+// Strings
+//===================================
+
+// Alphabet
+
+test('Alphabet', () => {
+  let Alphabet = Algorithms.Strings.Alphabet;
+  expect(Alphabet.ASCII.contains("A")).toBe(true);
+}); 
+
+// Data compression
+
+test('Huffman data compression', () => {
+  let Huffman = Algorithms.Strings.DataCompression.HuffMan;
+  let huffman = new Huffman("ABRACADABRA!");
+  // A = 5, B =2; C = 1; D = 1; R = 2; ! = 1
+  huffman.compress();
+  let res = 'ABRACADABRA!';
+  expect(huffman.expand()).toBe(res);
+});
+
+test('Run length codding', () => {
+  let RunLengthCoding = Algorithms.Strings.DataCompression.RunLengthCoding;
+  let in1 = "0000000000000001111111000000011111111111";
+  let resArr = [15, 7, 7, 11];
+  expect(RunLengthCoding.compress(in1)).toEqual(resArr); 
+}); 
+
+// Regular expressions
+
+test('Nondeterministic finite-state automata', () => {
+  let NFA = Algorithms.Strings.RegularExpressions.NFA;
+  let nfa1 = new NFA("((A*B|AC)D)");
+  let text1 = "AABD";
+  expect(nfa1.recognizes(text1)).toBe(true);
+}); 
+
+// String sorts
+
+test('Key indexed counting', () => {
+  let KeyIndexedCounting = Algorithms.Strings.StringSorts.KeyIndexedCounting;
+  let arrWithKey1 = [[2, 'Anderson'], [3, 'Brown'], [3, 'Davis'], [4, 'Garcia'], [1, 'Harris'], 
+  [3, 'Jackson'], [4, 'Johnson'], [3, 'Jones'], [1, 'Martin'], [2, 'Martinez'], [2, 'Miller'], 
+  [1, 'Moore'], [2, 'Robinson'], [4, 'Smith'], [3, 'Taylor'], [4, 'Thomas'], [4, 'Thompson'], 
+  [2, 'White'], [3, 'Williams'], [4, 'Wilson']];
+  let keyIndexedCounting1 = new KeyIndexedCounting(arrWithKey1);
+  let resArr = [[1, "Harris"], [1, "Martin"], [1, "Moore"], [2, "Anderson"],
+  [2, "Martinez"], [2, "Miller"], [2, "Robinson"], [2, "White"], [3, "Brown"],
+  [3, "Davis"], [3, "Jackson"], [3, "Jones"], [3, "Taylor"], [3, "Williams"],
+  [4, "Garcia"], [4, "Johnson"], [4, "Smith"], [4, "Thomas"], [4, "Thompson"], [4, "Wilson"]];
+  expect(arrWithKey1).toEqual(resArr);
+});
+
+test('Quick 3 way string sorting', () => {
+  let Quick3String = Algorithms.Strings.StringSorts.Quick3String;
+  let arrStr1 = ["she", "sells", "seashells", "by",
+  "the", "seashore", "the", "shells", "she",
+  "sells", "are", "surely", "seashells"];
+  let quick3String1 = new Quick3String(arrStr1);
+  let resArr = ["are", "by", "seashells", "seashells", "seashore",
+  "sells", "sells", "she", "she", "shells", "surely", "the", "the"];
+  expect(arrStr1).toEqual(resArr);
+});
+
+test('Sort LSD', () => {
+  let sortLSD = Algorithms.Strings.StringSorts.sortLSD;
+  let arrStr1 = ["4PGC938", "2IYE230", "3CIO720",
+  "1ICK750", "1OHV845", "4JZY524", "1ICK750", "3CIO720",
+  "1OHV845", "1OHV845", "2RLA629", "2RLA629", "3ATW723"];
+  sortLSD(arrStr1, 256);
+  let resArr = ["1ICK750", "1ICK750", "1OHV845", "1OHV845",
+    "1OHV845", "2IYE230", "2RLA629", "2RLA629", "3ATW723",
+    "3CIO720", "3CIO720", "4JZY524", "4PGC938"]
+  expect(arrStr1).toEqual(resArr);
+});
+
+test('Sort MSD', () => {
+  let SortMSD = Algorithms.Strings.StringSorts.SortMSD;
+  let arrStr1 = ["she", "sells", "seashells", "by",
+  "the", "seashore", "the", "shells", "she",
+  "sells", "are", "surely", "seashells"];
+  let msd1 = new SortMSD(arrStr1, 256);
+  let resArr = ["are", "by", "seashells", "seashells",
+    "seashore", "sells", "sells", "she",
+    "she", "shells", "surely", "the", "the"];
+  expect(arrStr1).toEqual(resArr); 
+});
+
+// Substring search
+
+test('Alternate brute-force substring search', () => {
+  let alternateBruteForceSubstringSearch = Algorithms.Strings.SubstringSearch.alternateBruteForceSubstringSearch;
+  let text1 = "ABACADABRAC";
+  let pat1 = "ABRA";
+  expect(alternateBruteForceSubstringSearch(pat1, text1)).toBe(6);
+});
+
+test('Boyer-Moore substring search', () => {
+  let BoyerMoore = Algorithms.Strings.SubstringSearch.BoyerMoore;
+  let text1 = "ABACADABRAC";
+  let pat1 = "ABRA";
+  let boyerMoore1 = new BoyerMoore(pat1);
+  expect(boyerMoore1.search(text1)).toBe(6);
+}); 
+
+test('Brute-force substring search', () => {
+  let bruteForceSubstringSearch = Algorithms.Strings.SubstringSearch.bruteForceSubstringSearch;
+  let text1 = "ABACADABRAC";
+  let pat1 = "ABRA";
+  expect(bruteForceSubstringSearch(pat1, text1)).toBe(6);
+});
+
+test('Knuth-Morris-Pratt substring search', () => {
+  let KMP = Algorithms.Strings.SubstringSearch.KMP;
+  let text1 = "ABACADABRAC";
+  let pat1 = "ABRA";
+  let kmp1 = new KMP(pat1);
+  expect(kmp1.search(text1)).toBe(6);
+});
+
+test('Rabin-Karp substring search', () => {
+  let RabinKarp = Algorithms.Strings.SubstringSearch.RabinKarp;
+  let text1 = "ABACADABRAC";
+  let pat1 = "ABRA";
+  let rabinkarp1 = new RabinKarp(pat1);
+  expect(rabinkarp1.search(text1)).toBe(6);
+});
+
+// Trie trees
+
+test('Ternary search tries', () => {
+  let TernarySearchTries = Algorithms.Strings.TrieTrees.TernarySearchTries;
+  let TST1 = new TernarySearchTries();
+  TST1.put("she", 0);
+  TST1.put("shells", 1);
+  expect(TST1.get("shells")).toBe(1);
+});
+
+test('Trie ST', () => {
+  let TrieST = Algorithms.Strings.TrieTrees.TrieST;
+  let trieST1 = new TrieST();
+  trieST1.put("she", 0);
+  trieST1.put("shells", 1);
+  expect(trieST1.get("shells")).toBe(1);
+});
 
 
