@@ -1,18 +1,19 @@
 // сумма трех чисел
+
 const threeSum = (function(){
   function threeSum(arr) {
     let l = arr.length;
     let count = 0;
     let allCount = 0;
     for (let i = 0; i < l; i++) {
-        for (let j = i + 1; j < l; j++) {
-            for (let k = j + 1; k < l; k++) {
-                if (arr[i] + arr[j] + arr[k] == 0) {
-                    count++;
-                }
-                allCount++;
-            }
+      for (let j = i + 1; j < l; j++) {
+        for (let k = j + 1; k < l; k++) {
+          if (arr[i] + arr[j] + arr[k] == 0) {
+              count++;
+          }
+          allCount++;
         }
+      }
     }
     return [count, allCount];
   };
