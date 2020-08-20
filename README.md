@@ -7,9 +7,9 @@
 и
 [Algorithms, Part II](https://www.coursera.org/learn/algorithms-part2)
 
-Для дестирования использован Jest
-компиляция с помощью Babel
-для сборки использован Webpack
+Для тестирования использован Jest, 
+компиляция с помощью Babel, 
+для сборки использован Webpack.
 
 ## Содержание
 
