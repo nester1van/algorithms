@@ -1,10 +1,10 @@
-import { fnComparisionNumber } from './fnComparisin/fnComparision';
-import { fnComparisionEdge } from './fnComparisionEdge/fnComparisionEdge';
+import { fnComparisonNumber } from './fnComparison/fnComparison';
+import { fnComparisonEdge } from './fnComparisonEdge/fnComparisonEdge';
 import shuffle from './shuffledArray/shuffledArray';
 
 const Common = {
-  fnComparisionNumber,
-  fnComparisionEdge,
+  fnComparisonNumber,
+  fnComparisonEdge,
   shuffle
 };
 

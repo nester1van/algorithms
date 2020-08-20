@@ -2,8 +2,8 @@
 export default class Selection {
   constructor() {
   }
-  static less(a, b, fnComparision) {
-      return fnComparision(a, b) < 0;
+  static less(a, b, fnComparison) {
+      return fnComparison(a, b) < 0;
   }
   static exch(arr, i, j) {
       if (i == j) return;
@@ -15,20 +15,20 @@ export default class Selection {
       console.log(arr);
       return arr;
   }
-  static isSorted(arr, fnComparision) {
+  static isSorted(arr, fnComparison) {
       for (let i = 1; i < arr.length; i++) {
-          if (Selection.less(arr[i],arr[i - 1], fnComparision)) {
+          if (Selection.less(arr[i],arr[i - 1], fnComparison)) {
               return false;
           }
       }
       return true;
   }
-  static sort(arr, fnComparision) {
+  static sort(arr, fnComparison) {
       let l = arr.length;
       for (let i = 0; i < l; i++) {
           let min = i;
           for (let j = i + 1; j < l; j++) {
-              if (Selection.less(arr[j], arr[min], fnComparision)) {
+              if (Selection.less(arr[j], arr[min], fnComparison)) {
                   min = j;
               }
           }

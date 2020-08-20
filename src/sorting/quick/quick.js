@@ -1,9 +1,9 @@
 import shuffle from '../../common/shuffledArray/shuffledArray';
 // быстрая сортировка
 const quick = (function(shuffle){
-    function quick(fnComparision) {
+    function quick(fnComparison) {
         function less(a, b) {
-            return fnComparision(a, b) < 0;
+            return fnComparison(a, b) < 0;
         }
         function exch(arr, i, j) {
             if (i == j) return;

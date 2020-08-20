@@ -1,11 +1,11 @@
 import Queue from '../../../abstractDataTypes/queueUseLinkedList/queueUseLinkedList';
 import MinPQ from '../../../abstractDataTypes/minPQ/minPQ';
-import { fnComparisionEdge } from '../../../common/fnComparisionEdge/fnComparisionEdge';
+import { fnComparisonEdge } from '../../../common/fnComparisonEdge/fnComparisonEdge';
 // ленивый вариант алгоритма Прима
 export default class LazyPrimMST {
   constructor(weightedGraph) {
       this.marked = [];
-      this.minPQ = new MinPQ(fnComparisionEdge);
+      this.minPQ = new MinPQ(fnComparisonEdge);
       this.mst = new Queue();
       this.visit(weightedGraph, 0);
       while (!this.minPQ.isEmpty()) {

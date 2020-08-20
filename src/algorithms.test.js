@@ -6,13 +6,13 @@ import Algorithms from './algorithms';
 
 const numberArr = [0, 0, 1, 2, 2, 3, 4, 5, 6, 6, 7, 8, 9];
 
-test('Function comparsion of two numbers', () => {
-  expect(Algorithms.Common.fnComparisionNumber(4, 5))
+test('Function comparson of two numbers', () => {
+  expect(Algorithms.Common.fnComparisonNumber(4, 5))
   .toBe(-1);
 });
 
-test('Function comparsion of two strings', () => {
-  expect(Algorithms.Common.fnComparisionNumber('a', 'B'))
+test('Function comparson of two strings', () => {
+  expect(Algorithms.Common.fnComparisonNumber('a', 'B'))
   .toBe(1);
 });
 
@@ -603,10 +603,10 @@ test('Sequential search ST', () => {
 const startNumArr = [7, 4, 0, 6, 9, 1, 5, 6, 2, 0, 8, 2, 3];
 const finishNumArr = [0, 0, 1, 2, 2, 3, 4, 5, 6, 6, 7, 8, 9];
 
-const fnComparisionNumber = Algorithms.Common.fnComparisionNumber;
+const fnComparisonNumber = Algorithms.Common.fnComparisonNumber;
 
 test('Heap sort', () => {  
-  expect(Algorithms.Sorting.heap(fnComparisionNumber)(
+  expect(Algorithms.Sorting.heap(fnComparisonNumber)(
     [...startNumArr]))
   .toEqual([...finishNumArr]);
 });
@@ -614,28 +614,28 @@ test('Heap sort', () => {
 test('Insertion sort', () => {  
   expect(Algorithms.Sorting.Insertion.sort(
     [...startNumArr], 
-    fnComparisionNumber))
+    fnComparisonNumber))
   .toEqual([...finishNumArr]);
 });
 
 test('Merge bottom up', () => {
-  expect(Algorithms.Sorting.MergeBottomUp.sort([...startNumArr], fnComparisionNumber))
+  expect(Algorithms.Sorting.MergeBottomUp.sort([...startNumArr], fnComparisonNumber))
   .toEqual([...finishNumArr]);
 });
 
 test('Merge top down', () => {
-  expect(Algorithms.Sorting.MergeTopDown.sort([...startNumArr], fnComparisionNumber))
+  expect(Algorithms.Sorting.MergeTopDown.sort([...startNumArr], fnComparisonNumber))
   .toEqual([...finishNumArr]);
 });
 
 test('Quick sort', () => {
-  expect(Algorithms.Sorting.quick(fnComparisionNumber)(
+  expect(Algorithms.Sorting.quick(fnComparisonNumber)(
     [...startNumArr]))
   .toEqual([...finishNumArr]);
 });
 
 test('Quick 3 way sort', () => {
-  expect(Algorithms.Sorting.quick(fnComparisionNumber)(
+  expect(Algorithms.Sorting.quick(fnComparisonNumber)(
     [...startNumArr]))
   .toEqual([...finishNumArr]);
 });
@@ -643,12 +643,12 @@ test('Quick 3 way sort', () => {
 test('Selection sort', () => {  
   expect(Algorithms.Sorting.Selection.sort(
     [...startNumArr], 
-    fnComparisionNumber))
+    fnComparisonNumber))
   .toEqual([...finishNumArr]);
 });
 
 test('Shell sort', () => {
-  expect(Algorithms.Sorting.Shell.sort(startNumArr, fnComparisionNumber))
+  expect(Algorithms.Sorting.Shell.sort(startNumArr, fnComparisonNumber))
   .toEqual([...finishNumArr]);
 });
 

@@ -1,5 +1,5 @@
 import IndexMinPQ from '../../../abstractDataTypes/indexMinPQ/indexMinPQ';
-import { fnComparisionNumber } from '../../../common/fnComparisin/fnComparision';
+import { fnComparisonNumber } from '../../../common/fnComparison/fnComparison';
 
 // энергичный вариант алгоритма Прима для нахождениея МОД
 export default class PrimMST {
@@ -10,7 +10,7 @@ export default class PrimMST {
       for (let v = 0; v < weightedGraph.V; v++) {
           this.distTo[v] = Number.POSITIVE_INFINITY;
       }
-      this.pq = new IndexMinPQ(fnComparisionNumber);
+      this.pq = new IndexMinPQ(fnComparisonNumber);
       this.distTo[0] = 0;
       this.pq.insert(0, 0);
       while (!this.pq.isEmpty()) {

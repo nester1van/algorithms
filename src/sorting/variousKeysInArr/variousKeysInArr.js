@@ -1,10 +1,10 @@
 import quick3way from '../quick3way/quick3way';
-import { fnComparisionNumber } from '../../common/fnComparisin/fnComparision';
+import { fnComparisonNumber } from '../../common/fnComparison/fnComparison';
 // подсчет различных ключей в массиве
-const variousKeys = (function(fnComparision){
+const variousKeys = (function(fnComparison){
   function hasSameKeys(sortedArr) {
       for (let i = 0; i < sortedArr.length - 1; i++) {
-          if (fnComparision(sortedArr[i], sortedArr[i + 1]) == 0) {
+          if (fnComparison(sortedArr[i], sortedArr[i + 1]) == 0) {
               return true;
           }
       }
@@ -13,7 +13,7 @@ const variousKeys = (function(fnComparision){
   function countingVariosKeys(sortedArr) {
       let count = 1;
       for (let i = 0; i < sortedArr.length - 1; i++) {
-          if (fnComparision(sortedArr[i], sortedArr[i + 1]) != 0) {
+          if (fnComparison(sortedArr[i], sortedArr[i + 1]) != 0) {
               count++;
           }
       }
@@ -22,7 +22,6 @@ const variousKeys = (function(fnComparision){
   function uniqueValues(sortedArr) {
       let set = new Set(sortedArr);
       return set;
-      //for (let i = 0; i < sortedArr.length )
   }
   function mostRepetetiveValue(sortedArr) {
       let map = new Map();
@@ -39,12 +38,12 @@ const variousKeys = (function(fnComparision){
           arr.push([key, value]);
       }
       map.forEach(fnForEach);
-      function fnComparisionArray(a, b) {
+      function fnComparisonArray(a, b) {
           if (a[1] > b[1]) return 1;
           else if (a[1] < b[1]) return -1;
           else return 0;
       }
-      quick3way(fnComparisionArray).sort(arr);
+      quick3way(fnComparisonArray).sort(arr);
       let mostRepetetiveValue = [];
       for (let i = arr.length -1; i > -1; i--) {
           if (fnComparisionArray(arr[arr.length - 1], arr[i]) == 0) {
@@ -60,6 +59,6 @@ const variousKeys = (function(fnComparision){
       uniqueValues: uniqueValues,
       mostRepetetiveValue: mostRepetetiveValue
   }
-})(fnComparisionNumber);
+})(fnComparisonNumber);
 
 export default variousKeys;

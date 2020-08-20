@@ -1,7 +1,7 @@
 // пирамидальная сортировка
-function heap(fnComparision){
+function heap(fnComparison){
   function less(a, b) {
-      return fnComparision(a, b) < 0;
+      return fnComparison(a, b) < 0;
   }
   function exch(arr, i, j) {
       if (i == j) return;

@@ -2,8 +2,8 @@
 export default class Insertion {
   constructor() {
   }
-  static less(a, b, fnComparision) {
-      return fnComparision(a, b) < 0;
+  static less(a, b, fnComparison) {
+      return fnComparison(a, b) < 0;
   }
   static exch(arr, i, j) {
       if (i == j) return;
@@ -14,18 +14,18 @@ export default class Insertion {
   static show(arr) {
       console.log(arr);
   }
-  static isSorted(arr, fnComparision) {
+  static isSorted(arr, fnComparison) {
       for (let i = 1; i < arr.length; i++) {
-          if (Insertion.less(arr[i],arr[i - 1], fnComparision)) {
+          if (Insertion.less(arr[i],arr[i - 1], fnComparison)) {
               return false;
           }
       }
       return true;
   }
-  static sort(arr, fnComparision) {
+  static sort(arr, fnComparison) {
       let l = arr.length;
       for (let i = 1; i < l; i++) {
-          for (let j = i; j > 0 && Insertion.less(arr[j], arr[j-1], fnComparision); j--) {
+          for (let j = i; j > 0 && Insertion.less(arr[j], arr[j-1], fnComparison); j--) {
               Insertion.exch(arr, j, j-1);
           }
       } 

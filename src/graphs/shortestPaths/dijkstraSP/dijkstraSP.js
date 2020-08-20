@@ -1,11 +1,11 @@
 import IndexMinPQ from '../../../abstractDataTypes/indexMinPQ/indexMinPQ';
-import { fnComparisionNumber } from '../../../common/fnComparisin/fnComparision';
+import { fnComparisonNumber } from '../../../common/fnComparison/fnComparison';
 // алгоритм Дейкстры для нахождения кратчайшего пути
 export default class DijkstraSP {
   constructor(weightedDigraph, s) {
       this.edgeTo = [];
       this.distTo = [];
-      this.pq = new IndexMinPQ(fnComparisionNumber);
+      this.pq = new IndexMinPQ(fnComparisonNumber);
       for (let v = 0; v < weightedDigraph.V; v++) {
           this.distTo[v] = Number.POSITIVE_INFINITY;
       }

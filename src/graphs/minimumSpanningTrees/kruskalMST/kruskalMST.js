@@ -1,12 +1,12 @@
 import Queue from '../../../abstractDataTypes/queueUseLinkedList/queueUseLinkedList';
 import MinPQ from '../../../abstractDataTypes/minPQ/minPQ';
-import { fnComparisionEdge } from '../../../common/fnComparisionEdge/fnComparisionEdge';
+import { fnComparisonEdge } from '../../../common/fnComparisonEdge/fnComparisonEdge';
 import UnionFindQuickSearch from '../../../otherAlgorithms/unionFindQuickSearch/unionFindQuickSearch';
 // алгоритм Крускала для нахождения минимальных остовных деревьев
 export default class KruskalMST {
   constructor(weightedGraph) {
       this.mst = new Queue();
-      this.minPQ = new MinPQ(fnComparisionEdge);
+      this.minPQ = new MinPQ(fnComparisonEdge);
       this.uf = new UnionFindQuickSearch(weightedGraph.V);
       for (let v = 0; v < weightedGraph.V; v++) {
           for (let edge of weightedGraph.adj[v].fnGenerator()) {

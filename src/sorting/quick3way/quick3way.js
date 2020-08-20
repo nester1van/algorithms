@@ -1,7 +1,7 @@
 import shuffle from '../../common/shuffledArray/shuffledArray';
 // быстрая сортировка с трехчастным разбиением
 const quick3way = (function(shuffle) {
-    function quick3way(fnComparision) {
+    function quick3way(fnComparison) {
         function exch(arr, i, j) {
             if (i == j) return;
             let temp = arr[i];
@@ -20,8 +20,8 @@ const quick3way = (function(shuffle) {
             let gt = hi;
             let v = arr[lo];
             while (i <= gt) {
-                if (fnComparision(arr[i], v) < 0) exch(arr, i++, lt++);
-                else if (fnComparision(arr[i], v) > 0) exch(arr, i, gt--);
+                if (fnComparison(arr[i], v) < 0) exch(arr, i++, lt++);
+                else if (fnComparison(arr[i], v) > 0) exch(arr, i, gt--);
                 else i++;
             }
             sort(arr, lo, lt - 1);

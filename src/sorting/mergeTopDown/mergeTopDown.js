@@ -2,8 +2,8 @@
 export default class MergeTopDown {
   constructor() {
   }
-  static less(a, b, fnComparision) {
-      return fnComparision(a, b) < 0;
+  static less(a, b, fnComparison) {
+      return fnComparison(a, b) < 0;
   }
   static exch(arr, i, j) {
       if (i == j) return;
@@ -14,16 +14,16 @@ export default class MergeTopDown {
   static show(arr) {
       console.log(arr);
   }
-  static isSorted(arr, fnComparision) {
+  static isSorted(arr, fnComparison) {
       for (let i = 1; i < arr.length; i++) {
-          if (MergeTopDown.less(arr[i],arr[i - 1], fnComparision)) {
+          if (MergeTopDown.less(arr[i],arr[i - 1], fnComparison)) {
               return false;
           }
       }
       return true;
   }
 
-  static merge(arr, fnComparision, tempArr, lo, mid, hi) {
+  static merge(arr, fnComparison, tempArr, lo, mid, hi) {
       let i = lo;
       let j = mid + 1;
       for (let k = lo; k <= hi; k++) {
@@ -36,24 +36,24 @@ export default class MergeTopDown {
           else if (j > hi) {
               arr[k] = tempArr[i++];
           }
-          else if (MergeTopDown.less(tempArr[i], tempArr[j], fnComparision)) {
+          else if (MergeTopDown.less(tempArr[i], tempArr[j], fnComparison)) {
               arr[k] = tempArr[i++];
           }
           else {arr[k] = tempArr[j++];     }
       }
   }
 
-  static sort(arr, fnComparision) {
+  static sort(arr, fnComparison) {
       let tempArr = [];
-      MergeTopDown._sort(arr, fnComparision, tempArr, 0, arr.length - 1);
+      MergeTopDown._sort(arr, fnComparison, tempArr, 0, arr.length - 1);
       return arr;
   }
 
-  static _sort(arr, fnComparision, tempArr, lo, hi) {
+  static _sort(arr, fnComparison, tempArr, lo, hi) {
       if (hi <= lo) return;
       let mid = lo + Math.floor((hi - lo) / 2);
-      MergeTopDown._sort(arr, fnComparision, tempArr, lo, mid);
-      MergeTopDown._sort(arr, fnComparision, tempArr, mid + 1, hi);
-      MergeTopDown.merge(arr, fnComparision, tempArr, lo, mid, hi);
+      MergeTopDown._sort(arr, fnComparison, tempArr, lo, mid);
+      MergeTopDown._sort(arr, fnComparison, tempArr, mid + 1, hi);
+      MergeTopDown.merge(arr, fnComparison, tempArr, lo, mid, hi);
   }
 }
