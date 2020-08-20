@@ -1,4 +1,4 @@
-// Поиск в глубину
+// поиск в глубину
 
 export default class DepthFirstSearch {
   constructor(graph, sourceV) {

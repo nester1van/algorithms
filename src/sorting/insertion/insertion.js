@@ -1,4 +1,4 @@
-// Сортировка вставками
+// сортировка вставками
 
 export default class Insertion {
   constructor() {
